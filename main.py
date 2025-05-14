@@ -6,6 +6,7 @@ from functions.calc_score import get_high_temp_score
 from functions.calc_score import get_low_humi_score
 from functions.calc_score import get_high_humi_score
 from functions.calc_score import get_total_score
+from functions.send_notify import send_slack_message
 import time
 
 def main():
@@ -14,7 +15,7 @@ def main():
     date_str = str(tt)
     data = fetch_data(date_str)
     period_data = get_period_data(data)
-    print(period_data)
+    send_slack_message()
     for i in period_data[1]:
         print(i)
 
