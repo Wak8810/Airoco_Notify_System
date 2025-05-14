@@ -1,13 +1,20 @@
 # functions/fetcher.py
 
+import os
+from dotenv import load_dotenv
 import requests
 import time
 import csv
 import datetime
 
+load_dotenv()
+
 def fetch_data(date_str: str):
+    base_url = os.getenv('AIROCO_API_BASE_URL')
+    sensor_id = os.getenv('AIROCO_ID')
+    api_key = os.getenv('AIROCO_API_KEY')
     data = []
-    API_URL = "自分で変更する"
+    API_URL = f"{base_url}?id={sensor_id}&subscription-key={api_key}&startDate={date_str}"
     try:
         res = requests.get(API_URL)
         raw_data = csv.reader(res.text.strip().splitlines())
