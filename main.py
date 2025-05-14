@@ -7,6 +7,7 @@ from functions.calc_score import get_low_humi_score
 from functions.calc_score import get_high_humi_score
 from functions.calc_score import get_total_score
 from functions.send_notify import send_slack_message
+from functions.make_message import make_message
 import time
 
 def main():
@@ -26,6 +27,5 @@ def main():
                                                                                 get_low_humi_score(ele), 
                                                                                 get_high_humi_score(ele),
                                                                                 get_total_score(ele)))
-        
 if __name__ == "__main__":
     main()
