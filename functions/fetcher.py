@@ -8,21 +8,26 @@ import datetime
 
 load_dotenv()
 
-def fetch_data(date_str: str):
+def fetch_data(date_str: str, cl_num: int):
     base_url = os.getenv('AIROCO_API_BASE_URL')
     sensor_id = os.getenv('AIROCO_ID')
     api_key = os.getenv('AIROCO_API_KEY')
     data = []
     API_URL = f"{base_url}?id={sensor_id}&subscription-key={api_key}&startDate={date_str}"
+    classroom = ['Ｒ３ー３０１', 'Ｒ３ー４０１', 'Ｒ３ー４０３']
     try:
         res = requests.get(API_URL)
         raw_data = csv.reader(res.text.strip().splitlines())
         for row in raw_data:
-            if row[1]=='Ｒ３ー１Ｆ_ＥＨ':
+            if row[1]==classroom[cl_num]:
                 data.append(list(map(str,row[0:7])))
         return data
     except requests.exceptions.RequestException as e:
         return f"リクエストエラー: {e}"
+
+def get_weekday(data: list):
+    data = datetime.datetime.strptime(data[0], '%Y/%m/%d %H:%M:%S')
+    return data.weekday()
 
 def get_period_data(data: list):
     period_data = []
