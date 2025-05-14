@@ -7,6 +7,7 @@ from functions.calc_score import get_low_humi_score
 from functions.calc_score import get_high_humi_score
 from functions.fetcher import get_weekday
 from functions.send_notify import send_slack_message
+from functions.make_message import make_message
 from functions.calc_average import get_ave
 import time
 
