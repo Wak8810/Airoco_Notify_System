@@ -1,16 +1,16 @@
 
-def make_message(period_data: list):
+def make_message(period_scores: list):
     messages = ""
-    for i in range(len(period_data)):
+    for i in range(len(period_scores)):
         message = ""
         message += "{}限目\n".format(i+1)
-        message += "*CO2のスコア: {}*\n".format(period_data[i][0])
-        message += "*温度のスコア: {}*\n".format(min(period_data[i][1], period_data[i][2]))
-        message += "*湿度のスコア: {}*\n".format(min(period_data[i][3], period_data[i][4]))
+        message += "*CO2のスコア: {}*\n".format(period_scores[i][0])
+        message += "*温度のスコア: {}*\n".format(min(period_scores[i][1], period_scores[i][2]))
+        message += "*湿度のスコア: {}*\n".format(min(period_scores[i][3], period_scores[i][4]))
         alert_messages = ""
-        alert_messages += alert_co2(period_data[i][0])
-        alert_messages += alert_temperature(period_data[i][1], period_data[i][2])
-        alert_messages += alert_humidity(period_data[i][3], period_data[i][4])
+        alert_messages += alert_co2(period_scores[i][0])
+        alert_messages += alert_temperature(period_scores[i][1], period_scores[i][2])
+        alert_messages += alert_humidity(period_scores[i][3], period_scores[i][4])
         if(alert_messages == ""):
             alert_messages = "良い環境でした！"
         message += "評価: {}\n".format(alert_messages)
