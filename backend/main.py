@@ -21,6 +21,7 @@ def main():
     for i in range(6):
         period_elements.append(get_ave(period_data[i]))
     print(period_elements)
+    send_slack_message()
     """
     for i in period_data[2]:
         print(i)
