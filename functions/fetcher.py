@@ -1,7 +1,6 @@
 # functions/fetcher.py
 
 import requests
-import time
 import csv
 import datetime
 
