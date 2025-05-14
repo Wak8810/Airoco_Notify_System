@@ -14,10 +14,11 @@ def main():
     date_str = str(tt)
     data = fetch_data(date_str)
     period_data = get_period_data(data)
-    for i in period_data[5]:
+    print(period_data)
+    for i in period_data[1]:
         print(i)
 
-    for ele in period_data[5]:
+    for ele in period_data[1]:
         print("CO2:{} low_temp:{} high_temp:{} low_humi:{} high_humi:{} total:{}".format(get_co2_score(ele), 
                                                                                 get_low_temp_score(ele),
                                                                                 get_high_temp_score(ele), 
