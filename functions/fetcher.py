@@ -7,7 +7,7 @@ import datetime
 
 def fetch_data(date_str: str):
     data = []
-    API_URL = f'https://airoco.necolico.jp/data-api/day-csv?id=CgETViZ2&subscription-key=6b8aa7133ece423c836c38af01c59880&startDate={date_str}'
+    API_URL = "自分で変更する"
     try:
         res = requests.get(API_URL)
         raw_data = csv.reader(res.text.strip().splitlines())
