@@ -27,20 +27,30 @@ def make_message(period_scores: list, cl_num: int):
 def alert_co2(co2_score: int):
     if co2_score == 1:
         return "二酸化炭素濃度が悪い状態でした。換気を忘れずに！"
+    elif co2_score == 2:
+        return "二酸化炭素濃度の上昇に注意しましょう。"
     return ""
 
 def alert_temperature(high_temp_score: int, low_temp_score: int):
     if high_temp_score == 1:
-        return "温度が高い状態でした。暖房を忘れずに！"
+        return "室温が高い状態でした。冷房を忘れずに！"
+    elif high_temp_score == 2:
+        return "高温に注意しましょう。"
     elif low_temp_score == 1:
-        return "温度が低い状態でした。冷房を忘れずに！"
+        return "室温が低い状態でした。暖房を忘れずに！"
+    elif low_temp_score == 2:
+        return "低温に注意しましょう。"
     return ""
 
 def alert_humidity(high_humidity_score: int, low_humidity_score: int):
     if high_humidity_score == 1:
         return "湿度が高い状態でした。除湿を忘れずに！"
+    elif high_humidity_score == 2:
+        return "湿度の上昇に注意しましょう。"
     elif low_humidity_score == 1:
         return "湿度が低い状態でした。加湿を忘れずに！"
+    elif low_humidity_score == 2:
+        return "湿度の低下に注意しましょう。"
     return ""
     
     
