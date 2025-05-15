@@ -1,5 +1,5 @@
 def get_co2_score(data: list):
-    ele = int(data[3])
+    ele = int(data[0])
     
     if ele < 900:
         return 3
@@ -9,7 +9,7 @@ def get_co2_score(data: list):
         return 1
     
 def get_low_temp_score(data: list):
-    ele = float(data[4])
+    ele = float(data[1])
 
     if ele > 18:
         return 3
@@ -19,7 +19,7 @@ def get_low_temp_score(data: list):
         return 1
     
 def get_high_temp_score(data: list):
-    ele = float(data[4])
+    ele = float(data[1])
 
     if ele < 27:
         return 3
@@ -29,7 +29,7 @@ def get_high_temp_score(data: list):
         return 1
 
 def get_low_humi_score(data: list):
-    ele = float(data[5])
+    ele = float(data[2])
 
     if ele > 45:
         return 3
@@ -39,7 +39,7 @@ def get_low_humi_score(data: list):
         return 1
     
 def get_high_humi_score(data: list):
-    ele = float(data[5])
+    ele = float(data[2])
 
     if ele < 55:
         return 3
@@ -47,3 +47,20 @@ def get_high_humi_score(data: list):
         return 2
     else: # 湿度が高く，カビやダニが発生しやすい
         return 1
+    
+def get_period_scores(data: list):
+    for ele in data:
+        if ele == None:
+            return data
+        co2 = get_co2_score(ele)
+        high_temp = get_high_temp_score(ele)
+        low_temp = get_low_temp_score(ele)
+        high_humi = get_high_humi_score(ele)
+        low_humi = get_low_humi_score(ele)
+        ele.insert(0, co2)
+        ele.insert(1, high_temp)
+        ele.insert(2, low_temp)
+        ele.insert(3, high_humi)
+        ele.insert(4, low_humi)
+    
+    return data
