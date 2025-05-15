@@ -38,9 +38,12 @@ def main():
     _401_text = make_message(r3_401_period_scores, 1)
     _403_text = make_message(r3_403_period_scores, 2)
     print(_301_text)
+    print(_401_text)
+    print(_403_text)
+    
     send_slack_message(_301_text)
     send_slack_message(_401_text)
     send_slack_message(_403_text)
-        
+
 if __name__ == "__main__":
     main()

@@ -3,50 +3,51 @@ def get_co2_score(data: list):
     
     if ele < 900:
         return 3
-    elif ele >= 900 and ele < 1000:
+    elif ele >= 900 and ele <= 1000:
         return 2
     else: # 二酸化炭素が多く息苦しい状態
-        return 1
-    
-def get_low_temp_score(data: list):
-    ele = float(data[1])
-
-    if ele > 18:
-        return 3
-    elif ele == 18:
-        return 2
-    else: # 室温が低い
         return 1
     
 def get_high_temp_score(data: list):
     ele = float(data[1])
 
-    if ele < 27:
+    if ele < 26:
         return 3
-    elif ele == 28:
+    elif ele >= 26 and ele <= 28:
         return 2
     else: # 室温が高い
+        return 1
+
+def get_low_temp_score(data: list):
+    ele = float(data[1])
+
+    if ele > 19:
+        return 3
+    elif ele >= 17 and ele <= 19:
+        return 2
+    else: # 室温が低い
+        return 1
+
+def get_high_humi_score(data: list):
+    ele = float(data[2])
+
+    if ele < 60:
+        return 3
+    elif ele >= 60 and ele <= 70:
+        return 2
+    else: # 湿度が高く，カビやダニが発生しやすい
         return 1
 
 def get_low_humi_score(data: list):
     ele = float(data[2])
 
-    if ele > 45:
+    if ele > 50:
         return 3
-    elif ele >= 40 and ele <= 45:
+    elif ele >= 40 and ele <= 50:
         return 2
     else: # 湿度が低く乾燥しており，風邪を引きやすい
         return 1
     
-def get_high_humi_score(data: list):
-    ele = float(data[2])
-
-    if ele < 55:
-        return 3
-    elif ele >= 55 and ele <= 60:
-        return 2
-    else: # 湿度が高く，カビやダニが発生しやすい
-        return 1
     
 def get_period_scores(data: list):
     for ele in data:
