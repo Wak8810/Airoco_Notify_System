@@ -51,10 +51,11 @@ def main():
     print(_301_text)
     print(_401_text)
     print(_403_text)
-    
+    """
     send_slack_message(_301_text)
     send_slack_message(_401_text)
     send_slack_message(_403_text)
+    """
 
     # データベースにスコアを追加
     for period in range(6):
