@@ -21,7 +21,7 @@ def main():
     # 12時間前の時刻を取得
     tt = curr_time - timedelta(hours=12)
     date_str = str(int(tt.timestamp()))
-    current_date = tt.strftime('%Y-%m-%d')
+    current_date = tt.strftime('%Y/%m/%d')
     
     r3_301_data = fetch_data(date_str, 0)
     r3_401_data = fetch_data(date_str, 1)
@@ -49,9 +49,10 @@ def main():
 
     texts_list = []
     classroom_nums = [301, 401, 403]
-    texts_list.append(make_message(r3_301_period_scores, 0))
-    texts_list.append(make_message(r3_401_period_scores, 1))
-    texts_list.append(make_message(r3_403_period_scores, 2))
+    texts_list.append(make_message(r3_301_period_scores, 0, current_date))
+    texts_list.append(make_message(r3_401_period_scores, 1, current_date))
+    texts_list.append(make_message(r3_403_period_scores, 2, current_date))
+    
     
     for i in range(3):
         send_slack_message(texts_list[i],classroom_nums[i])
@@ -62,7 +63,7 @@ def main():
         if period < len(r3_301_period_scores) and r3_301_period_scores[period] is not None:
             add_datas(
                 classroom_name="R3-301",
-                date=current_date,
+                date=tt.strftime('%Y-%m-%d'),  # データベース用はハイフン区切りのまま
                 period=period + 1,
                 co2_score=r3_301_period_scores[period][0],
                 temp_score=min(r3_301_period_scores[period][1], r3_301_period_scores[period][2]),
@@ -76,7 +77,7 @@ def main():
         if period < len(r3_401_period_scores) and r3_401_period_scores[period] is not None:
             add_datas(
                 classroom_name="R3-401",
-                date=current_date,
+                date=tt.strftime('%Y-%m-%d'),  # データベース用はハイフン区切りのまま
                 period=period + 1,
                 co2_score=r3_401_period_scores[period][0],
                 temp_score=min(r3_401_period_scores[period][1], r3_401_period_scores[period][2]),
@@ -90,7 +91,7 @@ def main():
         if period < len(r3_403_period_scores) and r3_403_period_scores[period] is not None:
             add_datas(
                 classroom_name="R3-403",
-                date=current_date,
+                date=tt.strftime('%Y-%m-%d'),  # データベース用はハイフン区切りのまま
                 period=period + 1,
                 co2_score=r3_403_period_scores[period][0],
                 temp_score=min(r3_403_period_scores[period][1], r3_403_period_scores[period][2]),

@@ -1,9 +1,10 @@
-def make_message(period_scores: list, cl_num: int):
+def make_message(period_scores: list, cl_num: int, current_date: str):
     messages = ""
-    classroom = ['本日のＲ３ー３０１教室における環境をお知らせいたします\n\n', 
-                 '本日のＲ３ー４０１教室における環境をお知らせいたします\n\n', 
-                 '本日のＲ３ー４０３教室における環境をお知らせいたします\n\n']
-    cl_mes = classroom[cl_num]
+    classroom = ['R3-301', 
+                 'R3-401', 
+                 'R3-403']
+    mes_last = "教室における環境をお知らせいたします\n\n"
+    cl_mes = "本日({})の".format(current_date) + classroom[cl_num] + mes_last
     
     def get_stars(score: int) -> str:
         if score == 1:
