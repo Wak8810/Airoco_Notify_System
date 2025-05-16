@@ -11,7 +11,7 @@ from datetime import datetime, timezone, timedelta
 # プロジェクトのルートディレクトリをPythonパスに追加
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from db.add_scores import add_scores
+from db.add_datas import add_datas
 import time
 
 def main():
@@ -54,44 +54,54 @@ def main():
     print(_401_text)
     print(_403_text)
     
+    """
     send_slack_message(_301_text)
     send_slack_message(_401_text)
     send_slack_message(_403_text)
-    
+    """
 
     # データベースにスコアを追加
     for period in range(6):
         # R3-301のスコアを追加
         if period < len(r3_301_period_scores) and r3_301_period_scores[period] is not None:
-            add_scores(
+            add_datas(
                 classroom_name="R3-301",
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_301_period_scores[period][0],
                 temp_score=min(r3_301_period_scores[period][1], r3_301_period_scores[period][2]),
-                humi_score=min(r3_301_period_scores[period][3], r3_301_period_scores[period][4])
+                humi_score=min(r3_301_period_scores[period][3], r3_301_period_scores[period][4]),
+                co2_value=r3_301_period_elements[period][5],
+                temp_value=r3_301_period_elements[period][6],
+                humi_value=r3_301_period_elements[period][7]
             )
         
         # R3-401のスコアを追加
         if period < len(r3_401_period_scores) and r3_401_period_scores[period] is not None:
-            add_scores(
+            add_datas(
                 classroom_name="R3-401",
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_401_period_scores[period][0],
                 temp_score=min(r3_401_period_scores[period][1], r3_401_period_scores[period][2]),
-                humi_score=min(r3_401_period_scores[period][3], r3_401_period_scores[period][4])
+                humi_score=min(r3_401_period_scores[period][3], r3_401_period_scores[period][4]),
+                co2_value=r3_401_period_elements[period][5],
+                temp_value=r3_401_period_elements[period][6],
+                humi_value=r3_401_period_elements[period][7]
             )
         
         # R3-403のスコアを追加
         if period < len(r3_403_period_scores) and r3_403_period_scores[period] is not None:
-            add_scores(
+            add_datas(
                 classroom_name="R3-403",
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_403_period_scores[period][0],
                 temp_score=min(r3_403_period_scores[period][1], r3_403_period_scores[period][2]),
-                humi_score=min(r3_403_period_scores[period][3], r3_403_period_scores[period][4])
+                humi_score=min(r3_403_period_scores[period][3], r3_403_period_scores[period][4]),
+                co2_value=r3_403_period_elements[period][5],
+                temp_value=r3_403_period_elements[period][6],
+                humi_value=r3_403_period_elements[period][7]
             )
 
 if __name__ == "__main__":
