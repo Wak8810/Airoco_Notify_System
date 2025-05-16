@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def add_scores(classroom_name: str, date: str, period: int, co2_score: float, temp_score: float, humi_score: float):
+def add_datas(classroom_name: str, date: str, period: int, co2_score: float, temp_score: float, humi_score: float, co2_value: float, temp_value: float, humi_value: float):
     # DB接続
     conn = psycopg2.connect(
         host=os.getenv('SUPABASE_DB_HOST'),
@@ -29,15 +29,18 @@ def add_scores(classroom_name: str, date: str, period: int, co2_score: float, te
             # データを挿入
             cur.execute("""
                 INSERT INTO classroom_scores 
-                (classroom, date, day_of_week, period, co2_score, temperature_score, humidity_score)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                (classroom, date, day_of_week, period, co2_score, temperature_score, humidity_score, co2_value, temperature_value, humidity_value)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
                 ON CONFLICT (classroom, date, period) 
                 DO UPDATE SET
                     co2_score = EXCLUDED.co2_score,
                     temperature_score = EXCLUDED.temperature_score,
                     humidity_score = EXCLUDED.humidity_score,
+                    co2_value = EXCLUDED.co2_value,
+                    temperature_value = EXCLUDED.temperature_value,
+                    humidity_value = EXCLUDED.humidity_value,
                     created_at = CURRENT_TIMESTAMP
-            """, (classroom_name, date, day_of_week, period, co2_score_int, temp_score_int, humi_score_int))
+            """, (classroom_name, date, day_of_week, period, co2_score_int, temp_score_int, humi_score_int, co2_value, temp_value, humi_value))
             
             conn.commit()
             return True
@@ -48,4 +51,4 @@ def add_scores(classroom_name: str, date: str, period: int, co2_score: float, te
         return False
         
     finally:
-        conn.close()
+        conn.close() 
