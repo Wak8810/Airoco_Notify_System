@@ -68,8 +68,8 @@ def main():
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_301_period_scores[period][0],
-                temp_score=r3_301_period_scores[period][1],
-                humi_score=r3_301_period_scores[period][2]
+                temp_score=min(r3_301_period_scores[period][1], r3_301_period_scores[period][2]),
+                humi_score=min(r3_301_period_scores[period][3], r3_301_period_scores[period][4])
             )
         
         # R3-401のスコアを追加
@@ -79,8 +79,8 @@ def main():
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_401_period_scores[period][0],
-                temp_score=r3_401_period_scores[period][1],
-                humi_score=r3_401_period_scores[period][2]
+                temp_score=min(r3_401_period_scores[period][1], r3_401_period_scores[period][2]),
+                humi_score=min(r3_401_period_scores[period][3], r3_401_period_scores[period][4])
             )
         
         # R3-403のスコアを追加
@@ -90,8 +90,8 @@ def main():
                 date=current_date,
                 period=period + 1,
                 co2_score=r3_403_period_scores[period][0],
-                temp_score=r3_403_period_scores[period][1],
-                humi_score=r3_403_period_scores[period][2]
+                temp_score=min(r3_403_period_scores[period][1], r3_403_period_scores[period][2]),
+                humi_score=min(r3_403_period_scores[period][3], r3_403_period_scores[period][4])
             )
 
 if __name__ == "__main__":
