@@ -35,7 +35,8 @@ def add_scores(classroom_name: str, date: str, period: int, co2_score: float, te
                 DO UPDATE SET
                     co2_score = EXCLUDED.co2_score,
                     temperature_score = EXCLUDED.temperature_score,
-                    humidity_score = EXCLUDED.humidity_score
+                    humidity_score = EXCLUDED.humidity_score,
+                    created_at = CURRENT_TIMESTAMP
             """, (classroom_name, date, day_of_week, period, co2_score_int, temp_score_int, humi_score_int))
             
             conn.commit()

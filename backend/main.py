@@ -6,20 +6,22 @@ from functions.calc_average import get_ave
 from functions.calc_score import get_period_scores
 import sys
 import os
+from datetime import datetime, timezone, timedelta
 
 # プロジェクトのルートディレクトリをPythonパスに追加
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from db.add_scores import add_scores
 import time
-from datetime import datetime
 
 def main():
-    curr_time = int(time.time())
-    tt = curr_time - 60 * 60 * 12
-    date_str = str(tt)
-    # 日付をYYYY-MM-DD形式に変換
-    current_date = datetime.fromtimestamp(tt).strftime('%Y-%m-%d')
+    # 現在時刻をJSTで取得
+    jst = timezone(timedelta(hours=+9))
+    curr_time = datetime.now(jst)
+    # 12時間前の時刻を取得
+    tt = curr_time - timedelta(hours=12)
+    date_str = str(int(tt.timestamp()))
+    current_date = tt.strftime('%Y-%m-%d')
     
     r3_301_data = fetch_data(date_str, 0)
     r3_401_data = fetch_data(date_str, 1)
