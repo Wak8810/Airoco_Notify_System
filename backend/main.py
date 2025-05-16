@@ -41,22 +41,20 @@ def main():
     for i in range(6):
         r3_403_period_elements.append(get_ave(r3_403_period_data[i]))
 
-    print(r3_301_period_elements)
+    #print(r3_301_period_elements)
     r3_301_period_scores = get_period_scores(r3_301_period_elements)
     r3_401_period_scores = get_period_scores(r3_401_period_elements)
     r3_403_period_scores = get_period_scores(r3_403_period_elements)
-    print(r3_301_period_scores)
+    #print(r3_301_period_scores)
 
-    _301_text = make_message(r3_301_period_scores, 0)
-    _401_text = make_message(r3_401_period_scores, 1)
-    _403_text = make_message(r3_403_period_scores, 2)
-    print(_301_text)
-    print(_401_text)
-    print(_403_text)
+    texts_list = []
+    classroom_nums = [301, 401, 403]
+    texts_list.append(make_message(r3_301_period_scores, 0))
+    texts_list.append(make_message(r3_401_period_scores, 1))
+    texts_list.append(make_message(r3_403_period_scores, 2))
     
-    send_slack_message(_301_text)
-    send_slack_message(_401_text)
-    send_slack_message(_403_text)
+    for i in range(3):
+        send_slack_message(texts_list[i],classroom_nums[i])
 
     # データベースにスコアを追加
     for period in range(6):
