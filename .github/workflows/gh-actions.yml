@@ -2,7 +2,7 @@ name: airoco_check
 
 on:
   schedule:
-    - cron: '30 11 * * 1-5'  # JST 20:30 は UTC 11:30、月〜金 (1-5)
+    - cron: '50 10 * * 1-5'  # JST 19:50 は UTC 10:50、月〜金 (1-5)
   workflow_dispatch:
 
 jobs:

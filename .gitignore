@@ -7,3 +7,5 @@ __pycache__/
 
 # 環境変数ファイル
 .env
+
+db/all_delete_rec.py
