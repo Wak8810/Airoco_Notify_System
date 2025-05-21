@@ -8,4 +8,19 @@ export default defineConfig({
   base: '/Airoco-Notify-System/',
   plugins: [react(), tailwindcss()],
   envDir: resolve(__dirname, '..'), // 親ディレクトリの.envファイルを読み込む
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'assets/index-[hash].css';
+          return 'assets/[name]-[hash][extname]';
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
 })
