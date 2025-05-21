@@ -53,7 +53,6 @@ def main():
     texts_list.append(make_message(r3_401_period_scores, 1, current_date))
     texts_list.append(make_message(r3_403_period_scores, 2, current_date))
     
-    
     for i in range(3):
         send_slack_message(texts_list[i],classroom_nums[i])
 
