@@ -2,6 +2,7 @@ import { useSupabaseData } from './hooks/useSupabase'
 import { useState, useMemo } from 'react'
 import { Header } from './components/header'
 import { Footer } from './components/footer'
+import './css/tailwind.css'
 
 interface DataItem {
   classroom: string
