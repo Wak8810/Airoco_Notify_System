@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Airoco-Notify-System/',
+  base: '/Airoco_Notify_System/',
   plugins: [react(), tailwindcss()],
   envDir: resolve(__dirname, '..'), // 親ディレクトリの.envファイルを読み込む
   build: {
