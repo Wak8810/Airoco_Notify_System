@@ -15,11 +15,11 @@ export default defineConfig({
       output: {
         manualChunks: undefined,
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'assets/index-[hash].css';
-          return 'assets/[name]-[hash][extname]';
+          if (assetInfo.name === 'style.css') return 'assets/index.css';
+          return 'assets/[name][extname]';
         },
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name].js',
+        entryFileNames: 'assets/[name].js',
       },
     },
   },
