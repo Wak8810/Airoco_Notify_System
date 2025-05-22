@@ -50,6 +50,7 @@ def make_message(period_scores: list, cl_num: int, current_date: str):
                 message += "📝 *評価*: {}\n".format(alert_messages)
             
             messages += message
+    messages += "詳しい情報はこちらから\nhttps://wak8810.github.io/Airoco_Notify_System/\n"
     
     # 最後の区切り線
     messages += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
