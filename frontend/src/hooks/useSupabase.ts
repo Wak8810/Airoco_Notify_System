@@ -1,4 +1,3 @@
-// src/hooks/useSupabase.ts
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 

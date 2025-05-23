@@ -27,15 +27,24 @@ const renderStars = (score: number) => {
 }
 
 // 前日の日付を取得する関数
-const getYesterday = () => {
-  const date = new Date()
-  date.setDate(date.getDate() - 1)
-  return date.toISOString().split('T')[0]
-}
+const getYesterdayOrTodayJST = () => {
+  const now = new Date();
+  const jstOffset = 9 * 60 * 60 * 1000;
+  const nowJST = new Date(now.getTime() + jstOffset);
+  const currentHourJST = nowJST.getHours();
+
+  const dateToSet = new Date(now);
+
+  if (currentHourJST < 20) {
+    dateToSet.setDate(dateToSet.getDate() - 1);
+  }
+
+  return dateToSet.toISOString().split('T')[0];
+};
 
 function App() {
   const { data, loading, error } = useSupabaseData<DataItem>('classroom_scores')
-  const [selectedDate, setSelectedDate] = useState<string>(getYesterday())
+  const [selectedDate, setSelectedDate] = useState<string>(getYesterdayOrTodayJST())
 
   // データが存在する日付のリストを作成
   const availableDates = useMemo(() => {
@@ -54,8 +63,6 @@ function App() {
     acc[item.classroom].push(item)
     return acc
   }, {} as Record<string, DataItem[]>)
-
-  const displayDate = selectedDate
 
   return (
     <div>
@@ -79,9 +86,9 @@ function App() {
           </div>
         </div>
 
-        {displayDate && (
+        {selectedDate&& (
           <p className="mb-4 text-gray-600">
-            表示日: {new Date(displayDate).toLocaleDateString('ja-JP', {
+            表示日: {new Date(selectedDate).toLocaleDateString('ja-JP', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
