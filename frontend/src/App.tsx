@@ -50,7 +50,14 @@ function App() {
   const availableDates = useMemo(() => {
     if (!data) return []
     const dates = new Set(data.map(item => item.date.slice(0, 10)))
-    return Array.from(dates).sort().reverse()
+    // 土日を除外した日付のみを返す
+    return Array.from(dates)
+      .filter(date => {
+        const dayOfWeek = new Date(date).getDay()
+        return dayOfWeek !== 0 && dayOfWeek !== 6 // 0: 日曜日, 6: 土曜日を除外
+      })
+      .sort()
+      .reverse()
   }, [data])
 
   // 選択された日付のデータのみをフィルタリング
