@@ -1,9 +1,7 @@
 import { useSupabaseData } from './hooks/useSupabase'
 import { useState, useMemo } from 'react'
-// 変更: Headerと新しいMenuModalをインポート
 import { Header } from './components/header' 
 import { Footer } from './components/footer'
-import { MenuModal } from './components/menumodal' // 追加
 import './css/tailwind.css'
 
 interface DataItem {
@@ -41,9 +39,6 @@ const getYesterdayOrTodayJST = () => {
 function App() {
   const { data, loading, error } = useSupabaseData<DataItem>('classroom_scores')
   const [selectedDate, setSelectedDate] = useState<string>(getYesterdayOrTodayJST())
-  
-  // 追加: モーダルの表示状態を管理するstate
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const availableDates = useMemo(() => {
     if (!data) return []
@@ -69,7 +64,7 @@ function App() {
 
   return (
     <>
-      <Header onMenuClick={() => setIsMenuOpen(true)} />
+      <Header />
       <div>
         <div className="p-4">
           <div className="flex justify-between items-center mb-6">
@@ -138,14 +133,7 @@ function App() {
           )}
         </div>
       </div>
-      <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
-        <h2 className="text-xl font-bold mb-4">メニュー</h2>
-        <ul>
-          {/* 説明とか書く？ */}
-        </ul>
-      </MenuModal>
-      <Footer />  
-      
+      <Footer />
     </>
   );
 };
