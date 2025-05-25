@@ -33,6 +33,14 @@ const getYesterdayOrTodayJST = () => {
   if (currentHourJST < 20) {
     dateToSet.setDate(dateToSet.getDate() - 1);
   }
+
+  const dayOfWeek = dateToSet.getDay();
+  if (dayOfWeek === 0) { // 日曜日
+    dateToSet.setDate(dateToSet.getDate() - 2);
+  } else if (dayOfWeek === 6) { // 土曜日
+    dateToSet.setDate(dateToSet.getDate() - 1);
+  }
+
   return dateToSet.toISOString().split('T')[0];
 };
 
