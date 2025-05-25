@@ -16,7 +16,7 @@ def make_message(period_scores: list, cl_num: int, current_date: str):
         return "☆☆☆"
     
     # 最初の区切り線
-    messages = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    messages += "━━━━━━━━━━━━━━━━━━━━\n"
 
     messages += cl_mes
     
@@ -50,10 +50,10 @@ def make_message(period_scores: list, cl_num: int, current_date: str):
                 message += "📝 *評価*: {}\n".format(alert_messages)
             
             messages += message
+
+    messages += "━━━━━━━━━━━━━━━━━━━━\n"
     messages += "詳しい情報はこちらから\nhttps://wak8810.github.io/Airoco_Notify_System/\n"
-    
-    # 最後の区切り線
-    messages += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    messages += "━━━━━━━━━━━━━━━━━━━━\n"#最後の区切り線
     
     send_message = messages
     return send_message
