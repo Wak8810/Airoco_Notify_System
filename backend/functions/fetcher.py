@@ -1,10 +1,11 @@
 # functions/fetcher.py
 
-import os
-from dotenv import load_dotenv
-import requests
 import csv
 import datetime
+import os
+
+import requests
+from dotenv import load_dotenv
 
 load_dotenv()
 

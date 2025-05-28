@@ -1,18 +1,20 @@
-from functions.fetcher import fetch_data
-from functions.fetcher import get_period_data
-from functions.send_notify import send_slack_message
-from functions.make_message import make_message
+import os
+import sys
+from datetime import datetime, timedelta, timezone
+
 from functions.calc_average import get_ave
 from functions.calc_score import get_period_scores
-import sys
-import os
-from datetime import datetime, timezone, timedelta
+from functions.fetcher import fetch_data, get_period_data
+from functions.make_message import make_message
+from functions.send_notify import send_slack_message
 
 # プロジェクトのルートディレクトリをPythonパスに追加
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from db.add_datas import add_datas
 import time
+
+from db.add_datas import add_datas
+
 
 def main():
     # 現在時刻をJSTで取得
