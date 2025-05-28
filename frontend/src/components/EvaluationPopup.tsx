@@ -74,7 +74,7 @@ export const EvaluationPopup = ({ isOpen, onClose }: EvaluationPopupProps) => {
               <p><span className="text-yellow-500">{renderStars(1)}</span>: 70%以上 または 30%未満</p>
             </div>
           </div>
-          <p className="text-sm text-gray-500">参考: <a href="https://www.mhlw.go.jp/content/10900000/000616069.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">厚生労働省の基準</a></p>
+          <p className="text-sm text-gray-500">参考: <a href="https://www.mhlw.go.jp/content/10900000/000616069.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">商業施設等における「換気の悪い密閉空間」を改善するための換気について</a></p>
         </div>
       </div>
     </div>
