@@ -26,9 +26,7 @@ const renderStars = (score: number) => {
 
 const getYesterdayOrTodayJST = () => {
   const now = new Date();
-  const jstOffset = 9 * 60 * 60 * 1000;
-  const nowJST = new Date(now.getTime() + jstOffset);
-  const currentHourJST = nowJST.getHours();
+  const currentHourJST = now.getHours();
   const dateToSet = new Date(now);
   if (currentHourJST < 20) {
     dateToSet.setDate(dateToSet.getDate() - 1);
