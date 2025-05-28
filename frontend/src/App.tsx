@@ -76,9 +76,9 @@ function App() {
       <div>
         <div className="p-4">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">教室環境データ</h1>
+            <h1 className="text-3xl font-bold" style={{ userSelect: 'none' }}>R3環境チェック</h1>
             <div className="flex items-center gap-2">
-              <label htmlFor="date-select" className="text-sm font-medium text-gray-700">
+              <label htmlFor="date-select" className="text-sm font-medium text-gray-700" style={{ userSelect: 'none' }}>
                 日付を選択
               </label>
               <input
