@@ -41,9 +41,9 @@ def get_high_humi_score(data: list):
 def get_low_humi_score(data: list):
     ele = float(data[2])
 
-    if ele > 50:
+    if ele > 40:
         return 3
-    elif ele >= 40 and ele <= 50:
+    elif ele >= 30 and ele <= 40:
         return 2
     else: # 湿度が低く乾燥しており，風邪を引きやすい
         return 1
