@@ -1,9 +1,9 @@
 def get_co2_score(data: list):
     ele = int(data[0])
     
-    if ele < 900:
+    if ele < 800:
         return 3
-    elif ele >= 900 and ele <= 1000:
+    elif ele >= 800 and ele <= 1000:
         return 2
     else: # 二酸化炭素が多く息苦しい状態
         return 1
