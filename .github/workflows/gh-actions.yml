@@ -3,8 +3,8 @@ name: Deploy and Run
 on:
   push:
     branches: ["main"]
-  schedule:
-    - cron: '50 10 * * 1-5'  # JST 19:50 は UTC 10:50、月〜金 (1-5)
+  #schedule:
+  #  - cron: '50 10 * * 1-5'  # JST 19:50 は UTC 10:50、月〜金 (1-5)
   workflow_dispatch:
 
 permissions:
